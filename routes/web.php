@@ -8,7 +8,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::view('dashboard', 'layouts.layout')->name('dashboard');
 
     //Pacientes
-    
+    Route::view('pacientes', 'pages.pacientes.index')->name('pacientes.index');
 
 });
 

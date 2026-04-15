@@ -26,7 +26,7 @@ class DatabaseSeeder extends Seeder
         // 2. Generar datos de prueba relacionados
         // IMPORTANTE: Para evitar el error "Call to undefined method factory()",
         // verifica que los modelos Paciente y NotaMedica incluyan: use HasFactory;
-        Paciente::factory(10)->has(
+        Paciente::factory(50)->has(
             NotaMedica::factory()->count(2),
             'notasMedicas' // Nombre de la relación definida en el modelo Paciente
         )->create();

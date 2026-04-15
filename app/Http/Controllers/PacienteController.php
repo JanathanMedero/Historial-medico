@@ -13,7 +13,8 @@ class PacienteController extends Controller
      */
     public function index()
     {
-        //
+          $pacientes = Paciente::all();
+          return view('pages.pacientes.index', compact('pacientes'));
     }
 
     /**

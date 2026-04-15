@@ -116,7 +116,7 @@
                 <div class="card-body">
                     @yield('content')
                     <h2 class="h4">Panel de Control</h2>
-                    <p class="text-muted">Esta vista se adapta a teléfonos, tablets y computadoras.</p>
+                    <p class="text-muted">Esta vista se adapta a teléfonos, tablets y computadoras.</p
                 </div>
             </div>
         </main>

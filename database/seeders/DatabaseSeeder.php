@@ -18,16 +18,16 @@ class DatabaseSeeder extends Seeder
         // 1. Crear un Usuario Administrador fijo para pruebas
         // Esto te permite entrar siempre con: admin@medapp.com / password123
         User::factory()->create([
-            'name' => 'Admin MedApp',
+            'name' => 'Alejandro Gutierrez',
             'email' => 'medero.janathan@gmail.com',
-            'password' => Hash::make('123123'),
+            'password' => Hash::make('admin'),
         ]);
 
         // 2. Generar datos de prueba relacionados
         // IMPORTANTE: Para evitar el error "Call to undefined method factory()",
         // verifica que los modelos Paciente y NotaMedica incluyan: use HasFactory;
         Paciente::factory(10)->has(
-            NotaMedica::factory()->count(2), 
+            NotaMedica::factory()->count(2),
             'notasMedicas' // Nombre de la relación definida en el modelo Paciente
         )->create();
 

@@ -21,7 +21,7 @@ class NotaMedicaFactory extends Factory
         return [
             // Relación con un paciente existente o uno nuevo
             'paciente_id' => Paciente::factory(),
-            
+
             // 2. Motivo de consulta
             'motivo_consulta' => $this->faker->randomElement([
                 'Dolor lumbar persistente',
@@ -57,9 +57,6 @@ class NotaMedicaFactory extends Factory
             'tratamiento' => $this->faker->sentence(),
             'indicaciones' => 'Incrementar ingesta de líquidos (2L/día). Evitar irritantes.',
             'proxima_cita' => $this->faker->dateTimeBetween('now', '+6 months'),
-
-            // 9. Firma y Cédula
-            'cedula_profesional' => 'CED-' . $this->faker->numberBetween(1000000, 9999999),
         ];
     }
 }

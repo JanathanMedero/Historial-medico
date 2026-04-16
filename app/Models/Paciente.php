@@ -11,13 +11,14 @@ class Paciente extends Model
 /** @use HasFactory<\Database\Factories\PacienteFactory> */
 use HasFactory;
 
-protected $fillable = [
-'numero_expediente',
-'nombre',
-'fecha_nacimiento',
-'sexo',
-'sede'
-];
+// Campos permitidos para asignación masiva
+    protected $fillable = [
+        'numero_expediente',
+        'nombre',
+        'fecha_nacimiento',
+        'sexo',
+        'sede',
+    ];
 
 public function notasMedicas()
 {

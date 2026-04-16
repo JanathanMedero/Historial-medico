@@ -15,7 +15,7 @@ return new class extends Migration
         Schema::create('notas_medicas', function (Blueprint $table) {
             $table->id();
             $table->foreignId('paciente_id')->constrained()->onDelete('cascade');
-            
+
             // Punto 2: Motivo de consulta
             $table->text('motivo_consulta');
 
@@ -45,10 +45,6 @@ return new class extends Migration
             $table->text('tratamiento');
             $table->text('indicaciones');
             $table->date('proxima_cita')->nullable();
-
-            // Punto 9: Firma y Cédula
-            $table->string('cedula_profesional');
-            //$table->string('firma_digital')->nullable(); // Ruta a la imagen de la firma
 
             $table->timestamps();
         });

@@ -10,10 +10,14 @@
         <div class="container-fluid px-4 pb-5">
             <h1 class="mt-4">Registro Integral de Paciente</h1>
 
-            {{-- Alerta de errores general --}}
+            {{-- BLOQUE DE DIAGNÓSTICO TEMPORAL --}}
             @if ($errors->any())
-                <div class="alert alert-danger shadow-sm">
-                    <i class="fas fa-exclamation-triangle me-2"></i> Por favor, revisa los campos marcados en rojo para continuar.
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
                 </div>
             @endif
 

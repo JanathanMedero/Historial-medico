@@ -29,7 +29,5 @@ class NotaMedica extends Model
         'tratamiento',
         'indicaciones',
         'proxima_cita',
-        'cedula_profesional',
-        'firma_digital'
     ];
 }

@@ -32,7 +32,7 @@ final class PacienteTable extends PowerGridComponent
 
     public function datasource(): Builder
     {
-        return Paciente::query()->orderBy('id', 'asc');
+        return Paciente::query()->orderBy('id', 'desc');
     }
 
     public function fields(): PowerGridFields

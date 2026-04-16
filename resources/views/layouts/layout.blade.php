@@ -10,6 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    @stack('styles')
 </head>
 <body class="sb-nav-fixed">
 <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark justify-content-between">
@@ -86,7 +87,7 @@
 
         @yield('content')
 
-        
+
 
         <footer class="py-4 bg-light mt-auto">
             <div class="container-fluid px-4">

@@ -11,6 +11,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     //Pacientes
     Route::get('pacientes', [PacienteController::class, 'index'])->name('pacientes.index');
     Route::get('pacientes/crear', [PacienteController::class, 'create'])->name('pacientes.create');
+    Route::get('/numero-paciente/{paciente}', [PacienteController::class, 'edit'])->name('pacientes.edit');
     Route::get('/pacientes/{paciente}', [PacienteController::class, 'show'])->name('pacientes.show');
     Route::post('/pacientes', [PacienteController::class, 'store'])->name('pacientes.store');
 

@@ -13,9 +13,9 @@ return [
 
     // config/livewire-powergrid.php
 
+    //'theme' => \PowerComponents\LivewirePowerGrid\Themes\Bootstrap5::class,
+    //'theme' => \PowerComponents\LivewirePowerGrid\Themes\DaisyUI::class,
     'theme' => \PowerComponents\LivewirePowerGrid\Themes\Bootstrap5::class,
-    // 'theme' => \PowerComponents\LivewirePowerGrid\Themes\DaisyUI::class,
-    // 'theme' => \PowerComponents\LivewirePowerGrid\Themes\Bootstrap5::class,
 
     'cache_ttl' => null,
 

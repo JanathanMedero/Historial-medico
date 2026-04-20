@@ -131,7 +131,7 @@ class PacienteController extends Controller
      */
     public function show(Paciente $paciente)
     {
-        //
+        dd($paciente);
     }
 
     /**
@@ -139,7 +139,9 @@ class PacienteController extends Controller
      */
     public function edit(Paciente $paciente)
     {
-        //
+        $paciente->load('notasMedicas');
+
+        return view('pages.pacientes.edit', compact('paciente'));
     }
 
     /**

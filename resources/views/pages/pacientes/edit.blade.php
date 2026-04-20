@@ -24,9 +24,12 @@
             @endif
 
             {{-- Formulario apuntando al método update con spoofing PUT --}}
-            <form action="{{ route('pacientes.index', $paciente->id) }}" method="POST">
+            <form action="{{ route('pacientes.update', $paciente->id) }}" method="POST">
                 @csrf
                 @method('PUT') {{-- Requerido por Laravel para actualizaciones --}}
+
+                {{-- Enviamos el número de expediente de forma oculta --}}
+                <input type="hidden" name="numero_expediente" value="{{ $paciente->numero_expediente }}">
 
                 {{-- SECCIÓN 1: DATOS DE IDENTIFICACIÓN --}}
                 <div class="card mb-4 shadow-sm">

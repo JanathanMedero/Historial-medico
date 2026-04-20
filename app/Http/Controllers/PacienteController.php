@@ -149,7 +149,65 @@ class PacienteController extends Controller
      */
     public function update(UpdatePacienteRequest $request, Paciente $paciente)
     {
-        //
+        // 1. Validación de los datos
+        $request->validate([
+            // El 'unique' ignora el ID del paciente actual para permitir guardar sin cambiar el número
+            'numero_expediente' => 'required|unique:pacientes,numero_expediente,' . $paciente->id,
+            'nombre'            => 'required|string|max:255',
+            'fecha_nacimiento'  => 'required|date',
+            'sexo'              => 'required|in:Masculino,Femenino,Otro',
+            'sede'              => 'required|string',
+            'motivo_consulta'   => 'required|string',
+            'diagnostico_cie10' => 'required|string',
+            'tratamiento'       => 'required|string',
+            'indicaciones'      => 'required|string',
+            // Los demás campos se validan como opcionales
+            'antecedentes_heredofamiliares'      => 'nullable|string',
+            'antecedentes_personales_patologicos' => 'nullable|string',
+            'antecedentes_quirurgicos'            => 'nullable|string',
+            'alergias'                           => 'nullable|string',
+            'medicamentos_actuales'               => 'nullable|string',
+            'padecimiento_actual'                => 'nullable|string',
+            'signos_vitales'                     => 'nullable|string',
+            'exploracion_urologica_dirigida'     => 'nullable|string',
+        ]);
+
+        try {
+            DB::beginTransaction(); // Iniciamos la transacción de seguridad [cite: 1049]
+
+            // 2. Actualizamos los datos del Paciente
+            $paciente->update([
+                'numero_expediente' => $request->numero_expediente,
+                'nombre'            => $request->nombre,
+                'fecha_nacimiento'  => $request->fecha_nacimiento,
+                'sexo'              => $request->sexo,
+                'sede'              => $request->sede,
+            ]);
+
+            // 3. Actualizamos la Nota Médica (la más reciente) [cite: 843, 916]
+            $ultimaNota = $paciente->notasMedicas()->latest()->first();
+
+            if ($ultimaNota) {
+                $ultimaNota->update($request->only([
+                    'motivo_consulta', 'antecedentes_heredofamiliares',
+                    'antecedentes_personales_patologicos', 'antecedentes_quirurgicos',
+                    'alergias', 'medicamentos_actuales', 'padecimiento_actual',
+                    'signos_vitales', 'exploracion_urologica_dirigida',
+                    'estudios_laboratorio', 'estudios_imagen', 'estudios_patologia',
+                    'diagnostico_cie10', 'tratamiento', 'indicaciones'
+                ]));
+            }
+
+            DB::commit(); // Confirmamos los cambios en Laragon [cite: 1049]
+
+            // Redirigimos al listado con un mensaje de éxito [cite: 854]
+            return redirect()->route('pacientes.index')
+                ->with('success', 'El expediente de ' . $paciente->nombre . ' ha sido actualizado correctamente.');
+
+        } catch (\Exception $e) {
+            DB::rollBack(); // Si algo falla, revertimos todo [cite: 1049, 1105]
+            return back()->withInput()->with('error', 'Ocurrió un error al actualizar: ' . $e->getMessage());
+        }
     }
 
     /**

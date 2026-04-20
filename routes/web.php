@@ -8,12 +8,29 @@ Route::view('/', 'welcome')->name('home');
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::view('dashboard', 'layouts.layout')->name('dashboard');
 
-    //Pacientes
+    // Pacientes
     Route::get('pacientes', [PacienteController::class, 'index'])->name('pacientes.index');
     Route::get('pacientes/crear', [PacienteController::class, 'create'])->name('pacientes.create');
-    Route::get('/numero-paciente/{paciente}', [PacienteController::class, 'edit'])->name('pacientes.edit');
-    Route::get('/pacientes/{paciente}', [PacienteController::class, 'show'])->name('pacientes.show');
-    Route::post('/pacientes', [PacienteController::class, 'store'])->name('pacientes.store');
+
+    // Para editar (el formulario)
+    Route::get('pacientes/{paciente}/editar', [PacienteController::class, 'edit'])->name('pacientes.edit');
+
+    // Para mostrar
+    Route::get('pacientes/{paciente}', [PacienteController::class, 'show'])->name('pacientes.show');
+
+    // Para guardar nuevo
+    Route::post('pacientes', [PacienteController::class, 'store'])->name('pacientes.store');
+
+    // PARA ACTUALIZAR (CORREGIDA)
+    Route::put('pacientes/{paciente}', [PacienteController::class, 'update'])->name('pacientes.update');
+
+    //Pacientes
+    //Route::get('pacientes', [PacienteController::class, 'index'])->name('pacientes.index');
+    //Route::get('pacientes/crear', [PacienteController::class, 'create'])->name('pacientes.create');
+    //Route::get('/numero-paciente/{paciente}', [PacienteController::class, 'edit'])->name('pacientes.edit');
+    //Route::get('/pacientes/{paciente}', [PacienteController::class, 'show'])->name('pacientes.show');
+    //Route::post('/pacientes', [PacienteController::class, 'store'])->name('pacientes.store');
+    //Route::put('/pacientes/{paciente_actualizado}', [PacienteController::class, 'update'])->name('pacientes.update');
 
 });
 

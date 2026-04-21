@@ -35,7 +35,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('notas-medicas-paciente/{paciente}', [NotaMedicaController::class, 'index'])->name('notas.index');
     Route::get('nota/{id}/editar', [NotaMedicaController::class, 'edit'])->name('notas.edit');
+    Route::get('nota/crear-nueva-nota/{paciente}', [NotaMedicaController::class, 'create'])->name('notas.create');
     Route::put('nota/{id}', [NotaMedicaController::class, 'update'])->name('notas.update');
+    Route::post('nota/creada', [NotaMedicaController::class, 'store'])->name('notas.store');
 
 });
 

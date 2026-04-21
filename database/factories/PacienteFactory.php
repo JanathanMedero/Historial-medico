@@ -22,7 +22,7 @@ class PacienteFactory extends Factory
             'nombre' => $this->faker->name(),
             'fecha_nacimiento' => $this->faker->date('Y-m-d', '2010-01-01'),
             'sexo' => $this->faker->randomElement(['Masculino', 'Femenino', 'Otro']),
-            'sede' => $this->faker->randomElement(['Sede Central', 'Clínica Norte', 'Consultorio Sur']),
+            'sede' => $this->faker->randomElement(['HNSS', 'Star Médica', 'Pátzcuaro']),
         ];
     }
 }

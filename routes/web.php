@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PacienteController;
+use App\Http\Controllers\NotaMedicaController;
 
 Route::view('/', 'welcome')->name('home');
 
@@ -31,6 +32,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
     //Route::get('/pacientes/{paciente}', [PacienteController::class, 'show'])->name('pacientes.show');
     //Route::post('/pacientes', [PacienteController::class, 'store'])->name('pacientes.store');
     //Route::put('/pacientes/{paciente_actualizado}', [PacienteController::class, 'update'])->name('pacientes.update');
+
+    Route::get('notas-medicas-paciente/{paciente}', [NotaMedicaController::class, 'index'])->name('notas.index');
+    Route::get('nota/{id}/editar', [NotaMedicaController::class, 'edit'])->name('notas.edit');
+    Route::put('nota/{id}', [NotaMedicaController::class, 'update'])->name('notas.update');
 
 });
 

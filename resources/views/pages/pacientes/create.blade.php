@@ -72,28 +72,29 @@
 
                             <div class="col-md-3">
                                 <label for="estado_civil" class="form-label">Estado Civil</label>
-                                <select name="estado_civil" id="estado_civil" class="form-select">
+                                <select name="estado_civil" id="estado_civil" class="form-select" required>
                                     <option value="" selected disabled>Seleccione...</option>
                                     <option value="Soltero/a" {{ old('estado_civil') == 'Soltero/a' ? 'selected' : '' }}>Soltero/a</option>
                                     <option value="Casado/a" {{ old('estado_civil') == 'Casado/a' ? 'selected' : '' }}>Casado/a</option>
                                     <option value="Divorciado/a" {{ old('estado_civil') == 'Divorciado/a' ? 'selected' : '' }}>Divorciado/a</option>
                                     <option value="Viudo/a" {{ old('estado_civil') == 'Viudo/a' ? 'selected' : '' }}>Viudo/a</option>
                                     <option value="Unión Libre" {{ old('estado_civil') == 'Unión Libre' ? 'selected' : '' }}>Unión Libre</option>
+                                    <option value="Otro" {{ old('estado_civil') == 'Otro' ? 'selected' : '' }}>Otro</option>
                                 </select>
                             </div>
 
                             <div class="col-md-4">
-                                <label for="telefono" class="form-label">Teléfono</label>
+                                <label for="telefono" class="form-label">Teléfono (Opcional)</label>
                                 <input type="text" name="telefono" id="telefono" class="form-control" placeholder="10 dígitos" value="{{ old('telefono') }}">
                             </div>
 
                             <div class="col-md-8">
-                                <label for="domicilio" class="form-label">Domicilio Completo</label>
+                                <label for="domicilio" class="form-label">Domicilio Completo (Opcional)</label>
                                 <input type="text" name="domicilio" id="domicilio" class="form-control" placeholder="Calle, Colonia, Ciudad" value="{{ old('domicilio') }}">
                             </div>
 
                             <div class="col-md-4">
-                                <label for="refiere" class="form-label">Referido por</label>
+                                <label for="refiere" class="form-label">Referido por (Opcional)</label>
                                 <input type="text" name="refiere" id="refiere" class="form-control" value="{{ old('refiere') }}">
                             </div>
 
@@ -122,27 +123,27 @@
                                 <textarea name="motivo_consulta" id="motivo_consulta" class="form-control no-resize" rows="2" required>{{ old('motivo_consulta') }}</textarea>
                             </div>
                             <div class="col-md-4">
-                                <label class="form-label">Heredofamiliares</label>
+                                <label class="form-label">Heredofamiliares (Opcional)</label>
                                 <textarea name="antecedentes_heredofamiliares" class="form-control no-resize" rows="2">{{ old('antecedentes_heredofamiliares') }}</textarea>
                             </div>
                             <div class="col-md-4">
-                                <label class="form-label">Personales Patológicos</label>
+                                <label class="form-label">Personales Patológicos (Opcional)</label>
                                 <textarea name="antecedentes_personales_patologicos" class="form-control no-resize" rows="2">{{ old('antecedentes_personales_patologicos') }}</textarea>
                             </div>
                             <div class="col-md-4">
-                                <label class="form-label">Quirúrgicos</label>
+                                <label class="form-label">Quirúrgicos (Opcional)</label>
                                 <textarea name="antecedentes_quirurgicos" class="form-control no-resize" rows="2">{{ old('antecedentes_quirurgicos') }}</textarea>
                             </div>
                             <div class="col-md-4">
-                                <label class="form-label text-danger fw-bold">Alergias</label>
+                                <label class="form-label text-danger fw-bold">Alergias (Opcional)</label>
                                 <textarea name="alergias" class="form-control no-resize border-danger" rows="2">{{ old('alergias') }}</textarea>
                             </div>
                             <div class="col-md-4">
-                                <label class="form-label">Medicamentos Actuales</label>
+                                <label class="form-label">Medicamentos Actuales (Opcional)</label>
                                 <textarea name="medicamentos_actuales" class="form-control no-resize" rows="2">{{ old('medicamentos_actuales') }}</textarea>
                             </div>
                             <div class="col-md-4">
-                                <label class="form-label">Otros</label>
+                                <label class="form-label">Otros (Opcional)</label>
                                 <textarea name="otros" class="form-control no-resize" rows="2" placeholder="Información adicional...">{{ old('otros') }}</textarea>
                             </div>
                         </div>
@@ -166,29 +167,29 @@
                                 <p class="text-primary fw-bold mb-2 border-bottom pb-1"><i class="fas fa-heartbeat me-1"></i> Signos Vitales</p>
                             </div>
                             <div class="col-md col-6">
-                                <label class="form-label">Tensión Arterial</label>
+                                <label class="form-label">Tensión Arterial (Opcional)</label>
                                 <input type="text" name="tension_arterial" class="form-control" placeholder="120/80" value="{{ old('tension_arterial') }}">
                             </div>
                             <div class="col-md col-6">
-                                <label class="form-label">Frec. Cardiaca (LPM)</label>
+                                <label class="form-label">Frec. Cardiaca (LPM) (Opcional)</label>
                                 <input type="text" name="frecuencia_cardiaca" class="form-control" placeholder="70" value="{{ old('frecuencia_cardiaca') }}">
                             </div>
                             <div class="col-md col-6">
-                                <label class="form-label">Frec. Resp. (RPM)</label>
+                                <label class="form-label">Frec. Resp. (RPM) (Opcional)</label>
                                 <input type="text" name="frecuencia_respiratoria" class="form-control" placeholder="18" value="{{ old('frecuencia_respiratoria') }}">
                             </div>
                             <div class="col-md col-6">
-                                <label class="form-label">Temperatura (°C)</label>
+                                <label class="form-label">Temperatura (°C) (Opcional)</label>
                                 <input type="text" name="temperatura" class="form-control" placeholder="36.5" value="{{ old('temperatura') }}">
                             </div>
                             <div class="col-md col-6">
-                                <label class="form-label">Sat. en Sangre (%)</label>
+                                <label class="form-label">Sat. en Sangre (%) (Opcional)</label>
                                 <input type="text" name="saturacion_sangre" class="form-control" placeholder="98" value="{{ old('saturacion_sangre') }}">
                             </div>
 
                             <div class="col-12 mt-3">
                                 <label class="form-label">Exploración Física / Urológica Dirigida</label>
-                                <textarea name="exploracion_urologica_dirigida" class="form-control no-resize" rows="2">{{ old('exploracion_urologica_dirigida') }}</textarea>
+                                <textarea name="exploracion_urologica_dirigida" class="form-control no-resize" rows="2" required>{{ old('exploracion_urologica_dirigida') }}</textarea>
                             </div>
                         </div>
                     </div>
@@ -202,17 +203,17 @@
                     <div class="card-body">
                         <div class="row g-3">
                             <div class="col-md-4">
-                                <label class="form-label font-weight-bold">Estudios de Laboratorio</label>
+                                <label class="form-label font-weight-bold">Estudios de Laboratorio (Opcional)</label>
                                 <textarea name="estudios_laboratorio" class="form-control no-resize" rows="3"
                                     placeholder="Biometría, Química sanguínea...">{{ old('estudios_laboratorio') }}</textarea>
                             </div>
                             <div class="col-md-4">
-                                <label class="form-label font-weight-bold">Estudios de Imagen</label>
+                                <label class="form-label font-weight-bold">Estudios de Imagen (Opcional)</label>
                                 <textarea name="estudios_imagen" class="form-control no-resize" rows="3"
                                     placeholder="Ultrasonido, TAC, Rayos X...">{{ old('estudios_imagen') }}</textarea>
                             </div>
                             <div class="col-md-4">
-                                <label class="form-label font-weight-bold">Estudios de Patología</label>
+                                <label class="form-label font-weight-bold">Estudios de Patología (Opcional)</label>
                                 <textarea name="estudios_patologia" class="form-control no-resize" rows="3"
                                     placeholder="Biopsias, Citologías...">{{ old('estudios_patologia') }}</textarea>
                             </div>
@@ -228,19 +229,19 @@
                     <div class="card-body">
                         <div class="row g-3">
                             <div class="col-md-12">
-                                <label class="form-label font-weight-bold font-italic text-primary">Diagnóstico (CIE-10) Otro si aplica</label>
+                                <label class="form-label font-weight-bold font-italic text-primary">Diagnóstico (CIE-10) Otro si aplica (Opcional)</label>
                                 <input type="text" name="diagnostico_cie10" class="form-control border-primary" value="{{ old('diagnostico_cie10') }}">
                             </div>
                             <div class="col-md-6">
-                                <label class="form-label text-success font-weight-bold font-italic">Tratamiento Sugerido</label>
+                                <label class="form-label text-success font-weight-bold font-italic">Tratamiento Sugerido (Opcional)</label>
                                 <textarea name="tratamiento" class="form-control no-resize border-success" rows="3">{{ old('tratamiento') }}</textarea>
                             </div>
                             <div class="col-md-6">
-                                <label class="form-label">Indicaciones / Recomendaciones</label>
+                                <label class="form-label">Indicaciones / Recomendaciones (Opcional)</label>
                                 <textarea name="indicaciones" class="form-control no-resize" rows="3">{{ old('indicaciones') }}</textarea>
                             </div>
                             <div class="col-md-4">
-                                <label class="form-label">Próxima Cita</label>
+                                <label class="form-label">Próxima Cita (Opcional)</label>
                                 <input type="date" name="proxima_cita" class="form-control" value="{{ old('proxima_cita') }}">
                             </div>
                         </div>

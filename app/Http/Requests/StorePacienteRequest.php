@@ -26,7 +26,7 @@ class StorePacienteRequest extends FormRequest
             'fecha_nacimiento'  => 'nullable|date',
             'edad'              => 'nullable|integer',
             'sexo'              => 'required|in:Masculino,Femenino,Otro',
-            'estado_civil'      => 'nullable|string',
+            'estado_civil'      => 'required|string',
             'telefono'          => 'nullable|string|max:20',
             'domicilio'         => 'nullable|string',
             'refiere'           => 'nullable|string',
@@ -49,7 +49,7 @@ class StorePacienteRequest extends FormRequest
             'tension_arterial'                  => 'nullable|string',
             'frecuencia_respiratoria'           => 'nullable|string',
             'saturacion_sangre'                 => 'nullable|string',
-            'exploracion_urologica_dirigida'    => 'string',
+            'exploracion_urologica_dirigida'    => 'required|string',
 
 
             // 4. Estudios de Auxiliares de Diagnóstico
@@ -58,9 +58,9 @@ class StorePacienteRequest extends FormRequest
             'estudios_patologia'                 => 'nullable|string',
 
             // 5. Resultados y Plan
-            'diagnostico_cie10'  => 'string',
-            'tratamiento'        => 'string',
-            'indicaciones'       => 'string',
+            'diagnostico_cie10'  => 'nullable|string',
+            'tratamiento'        => 'nullable|string',
+            'indicaciones'       => 'nullable|string',
 
             'proxima_cita'       => 'nullable|date',
         ];

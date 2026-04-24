@@ -20,11 +20,11 @@ return new class extends Migration
 
             // 2. Motivo y Antecedentes
             $table->text('motivo_consulta');
-            $table->text('antecedentes_heredofamiliares');
-            $table->text('antecedentes_personales_patologicos');
-            $table->text('antecedentes_quirurgicos');
-            $table->text('alergias');
-            $table->text('medicamentos_actuales');
+            $table->text('antecedentes_heredofamiliares')->nullable();
+            $table->text('antecedentes_personales_patologicos')->nullable();
+            $table->text('antecedentes_quirurgicos')->nullable();
+            $table->text('alergias')->nullable();
+            $table->text('medicamentos_actuales')->nullable();
             $table->text('otros')->nullable();
 
             // 3. Evaluación y Exploración
@@ -42,9 +42,9 @@ return new class extends Migration
             $table->text('estudios_patologia')->nullable();
 
 
-            $table->string('diagnostico_cie10');
-            $table->text('tratamiento');
-            $table->text('indicaciones');
+            $table->string('diagnostico_cie10')->nullable();
+            $table->text('tratamiento')->nullable();
+            $table->text('indicaciones')->nullable();
             $table->date('proxima_cita')->nullable();
 
             $table->timestamps();

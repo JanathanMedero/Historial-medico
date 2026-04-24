@@ -153,7 +153,7 @@
                                                                         <textarea name="estudios_patologia" id="est_patologia" class="form-control no-resize" rows="2">{{ old('estudios_patologia') }}</textarea>
                                                                     </div>
                                                                     <div class="col-md-12">
-                                                                        <label for="diagnostico" class="form-label font-weight-bold">Diagnóstico (CIE-10)</label>
+                                                                        <label for="diagnostico" class="form-label font-weight-bold">Diagnóstico (CIE-10) otro si aplica</label>
                                                                         <input type="text" name="diagnostico_cie10" id="diagnostico"
                                                                         class="form-control @error('diagnostico_cie10') is-invalid @enderror"
                                                                             value="{{ old('diagnostico_cie10') }}" required>

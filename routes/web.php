@@ -4,7 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PacienteController;
 use App\Http\Controllers\NotaMedicaController;
 
-Route::view('/', 'welcome')->name('home');
+//Route::view('/', 'welcome')->name('home');
+
+Route::view('/', 'pages.auth.login')->name('login');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::view('dashboard', 'layouts.layout')->name('dashboard');

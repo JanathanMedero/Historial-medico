@@ -9,19 +9,23 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
-    {
-        // 1. TABLA DE PACIENTES (Datos de Identificación)
-        Schema::create('pacientes', function (Blueprint $table) {
-            $table->id();
-            $table->string('numero_expediente')->unique(); // Punto 1: Número de expediente
-            $table->string('nombre');                      // Punto 1: Nombre
-            $table->date('fecha_nacimiento');              // Punto 1: Para calcular la Edad
-            $table->enum('sexo', ['Masculino', 'Femenino', 'Otro']); // Punto 1: Sexo
-            $table->string('sede')->nullable();            // Punto 1: Sede
-            $table->timestamps();                          // Punto 1: Fecha de registro
-        });
-    }
+     public function up(): void
+ {
+     Schema::create('pacientes', function (Blueprint $table) {
+             $table->id();
+             $table->string('numero_expediente')->unique();
+             $table->string('nombre');
+             $table->date('fecha_nacimiento')->nullable();
+             $table->integer('edad')->nullable();
+             $table->enum('sexo', ['Masculino', 'Femenino', 'Otro']);
+             $table->string('estado_civil')->nullable();
+             $table->string('refiere')->nullable();
+             $table->text('domicilio')->nullable();
+             $table->string('telefono', 20)->nullable();
+             $table->string('sede')->nullable();
+             $table->timestamps();
+         });
+     }
 
     /**
      * Reverse the migrations.

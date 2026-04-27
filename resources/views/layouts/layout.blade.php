@@ -62,6 +62,10 @@
                         <div class="sb-nav-link-icon"><i class="fa-solid fa-users"></i></div>
                         Pacientes
                     </a>
+                    <a class="nav-link {{ request()->routeIs('pacientes.index') ? 'active' : '' }}" href="{{ route('pacientes.index') }}">
+                        <div class="sb-nav-link-icon"><i class="fa-solid fa-users"></i></div>
+                        Pacientes
+                    </a>
 
                     <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                         <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>

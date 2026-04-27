@@ -49,6 +49,10 @@ final class PacienteTable extends PowerGridComponent
                 $url = route('notas.index', $model->id);
                 return "<a href='{$url}' class='btn btn-success btn-sm text-white'>Notas Medicas</a>";
             })
+            ->add('boton_citas', function (Paciente $model) {
+                $url = route('pacientes.edit', $model->id);
+                return "<a href='{$url}' class='btn btn-danger btn-sm text-white'>Citas</a>";
+            })
             ->add('boton_editar', function (Paciente $model) {
                 $url = route('pacientes.edit', $model->id);
                 return "<a href='{$url}' class='btn btn-warning btn-sm text-white'>Editar</a>";
@@ -66,7 +70,8 @@ final class PacienteTable extends PowerGridComponent
             Column::make('Sede', 'sede')->sortable()->searchable(),
 
             // Usamos nuestro campo personalizado 'boton_ver'
-            Column::make('Mostrar Notas', 'mostrar_notas'),
+            Column::make('Mostrar notas', 'mostrar_notas'),
+            Column::make('Mostrar citas', 'boton_citas'),
             Column::make('Editar Paciente', 'boton_editar'),
         ];
     }

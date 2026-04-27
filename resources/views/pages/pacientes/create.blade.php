@@ -8,7 +8,7 @@
 
     <main>
         <div class="container-fluid px-4 pb-5">
-            <h1 class="mt-4">Registro Integral de Paciente</h1>
+            <h1 class="my-4">Registro Integral de Paciente (Historial clínico)</h1>
 
             {{-- Bloque de errores --}}
             @if ($errors->any())

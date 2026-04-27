@@ -10,6 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js"></script>
     @stack('styles')
 </head>
 <body class="sb-nav-fixed">
@@ -62,9 +63,9 @@
                         <div class="sb-nav-link-icon"><i class="fa-solid fa-users"></i></div>
                         Pacientes
                     </a>
-                    <a class="nav-link {{ request()->routeIs('pacientes.index') ? 'active' : '' }}" href="{{ route('pacientes.index') }}">
-                        <div class="sb-nav-link-icon"><i class="fa-solid fa-users"></i></div>
-                        Pacientes
+                    <a class="nav-link {{ request()->routeIs('citas.index') ? 'active' : '' }}" href="{{ route('citas.index') }}">
+                        <div class="sb-nav-link-icon"><i class="fa-regular fa-calendar"></i></div>
+                        Citas médicas
                     </a>
 
                     <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
@@ -124,6 +125,23 @@
                 localStorage.setItem('sb|sidebar-toggle', document.body.classList.contains('sb-sidenav-toggled'));
             });
         }
+    });
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    var calendarEl = document.getElementById('calendar');
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: 'dayGridMonth',
+            locale: 'es', // Para que esté en español
+
+            // AQUÍ ES DONDE SUCEDE LA MAGIA
+            events: '/api/citas',
+
+            eventClick: function(info) {
+                alert('Cita: ' + info.event.title + '\nPlan: ' + info.event.extendedProps.plan);
+            }
+        });
+        calendar.render();
     });
 </script>
 </body>

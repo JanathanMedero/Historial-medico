@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\User;
 use App\Models\Paciente;
 use App\Models\NotaMedica;
+use App\Models\Cita;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
@@ -23,25 +24,10 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('admin'),
         ]);
 
-        // 2. Generar datos de prueba relacionados
-        // IMPORTANTE: Para evitar el error "Call to undefined method factory()",
-        // verifica que los modelos Paciente y NotaMedica incluyan: use HasFactory;
-        /*
+        Paciente::factory(10)->create();
 
-        Paciente::factory(50)->has(
-            NotaMedica::factory()->count(2),
-            'notasMedicas' // Nombre de la relación definida en el modelo Paciente
-        )->create();
+        Cita::factory(10)->create();
 
-        */
 
-        /*
-        |--------------------------------------------------------------------------
-        | OPCIÓN 2: Llamar a Seeders específicos
-        |--------------------------------------------------------------------------
-        | $this->call([
-        |     MedicalSystemSeeder::class,
-        | ]);
-        */
     }
 }

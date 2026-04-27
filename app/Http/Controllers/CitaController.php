@@ -12,7 +12,29 @@ class CitaController extends Controller
      */
     public function index()
     {
-        //
+        $citas = Cita::all();
+
+        return view('pages.citas.index', compact('citas'));
+    }
+
+    public function getEvents()
+    {
+        $citas = Cita::all();
+
+        $eventos = $citas->map(function ($cita) {
+            return [
+                'id'    => $cita->id,
+                'title' => $cita->motivo_consulta, // Lo que se verá en el recuadro
+                'start' => $cita->fecha_inicio,    // Formato YYYY-MM-DD HH:mm:ss
+                // Si no tienes fecha_fin, FullCalendar asume una duración estándar
+                'extendedProps' => [
+                    'paciente' => $cita->paciente_id,
+                    'plan' => $cita->plan
+                ]
+            ];
+        });
+
+        return response()->json($eventos);
     }
 
     /**

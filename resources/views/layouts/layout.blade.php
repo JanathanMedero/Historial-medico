@@ -127,22 +127,56 @@
         }
     });
 </script>
+
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-    var calendarEl = document.getElementById('calendar');
-    var calendar = new FullCalendar.Calendar(calendarEl, {
-            initialView: 'dayGridMonth',
-            locale: 'es', // Para que esté en español
+        // 1. Obtener el elemento del calendario
+        const calendarEl = document.getElementById('calendar');
 
-            // AQUÍ ES DONDE SUCEDE LA MAGIA
-            events: '/api/citas',
+        // 2. Verificar que el elemento exista para evitar ReferenceError
+        if (calendarEl) {
+            const calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                locale: 'es', // Calendario en español
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay'
+                },
 
-            eventClick: function(info) {
-                alert('Cita: ' + info.event.title + '\nPlan: ' + info.event.extendedProps.plan);
-            }
-        });
-        calendar.render();
+                // 3. Cargar las citas pasadas desde el controlador
+                events: '/api/citas',
+
+                // 4. Lógica al hacer clic en una cita
+                eventClick: function(info) {
+                    // Extraer propiedades extendidas
+                    const props = info.event.extendedProps;
+
+                    // Mapear datos al Modal
+                    document.getElementById('det-paciente').innerText = info.event.title;
+                    document.getElementById('det-paciente').innerText = props.paciente_nombre || 'No asignado';
+                    document.getElementById('det-motivo').innerText = props.motivo_consulta || 'No asignado';
+                    document.getElementById('det-estado').innerText = props.estado_actual || 'Sin especificar';
+                    document.getElementById('det-plan').innerText = props.plan || 'Sin plan definido';
+                    document.getElementById('det-fecha').innerText = info.event.start.toLocaleString();
+                    document.getElementById('det-notas').innerText = props.notas || 'Sin observaciones';
+
+                    // 5. Mostrar el Modal de Bootstrap
+                    const modalElement = document.getElementById('modalCita');
+                    if (modalElement) {
+                        const myModal = new bootstrap.Modal(modalElement);
+                        myModal.show();
+                    }
+                }
+            });
+
+            // 6. Renderizar el calendario
+            calendar.render();
+        } else {
+            console.error("Error: No se encontró el contenedor <div id='calendar'></div>");
+        }
     });
 </script>
+
 </body>
 </html>

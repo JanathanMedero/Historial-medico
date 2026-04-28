@@ -24,12 +24,15 @@ class CitaController extends Controller
         $eventos = $citas->map(function ($cita) {
             return [
                 'id'    => $cita->id,
-                'title' => $cita->motivo_consulta, // Lo que se verá en el recuadro
+                'title' => $cita->paciente ? $cita->paciente->nombre : 'Paciente desconocido', // Lo que se verá en el recuadro
                 'start' => $cita->fecha_inicio,    // Formato YYYY-MM-DD HH:mm:ss
                 // Si no tienes fecha_fin, FullCalendar asume una duración estándar
                 'extendedProps' => [
-                    'paciente' => $cita->paciente_id,
-                    'plan' => $cita->plan
+                    'paciente_nombre'       => $cita->paciente ? $cita->paciente->nombre : 'Paciente no encontrado',
+                    'motivo_consulta'       => $cita->motivo_consulta,
+                    'estado_actual'         => $cita->estado_actual,
+                    'plan'                  => $cita->plan,
+                    'notas'                 => $cita->notas,
                 ]
             ];
         });

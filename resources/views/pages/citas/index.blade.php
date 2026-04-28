@@ -14,7 +14,7 @@
                     <p class="text-muted">Calendario de citas programadas</p>
                 </div>
                 <a href="{{ route('pacientes.create') }}" class="btn btn-primary shadow-sm">
-                    <strong>+</strong> Nuevo Paciente
+                    <strong>+</strong> Nueva Cita
                 </a>
             </div>
             @if(session('success'))
@@ -36,4 +36,28 @@
             </div>
         </div>
     </main>
+
+    <div class="modal fade" id="modalCita" tabindex="-1" aria-labelledby="modalCitaLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="modalCitaLabel">Detalles de la Cita</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p><strong>Paciente:</strong> <span id="det-paciente"></span></p>
+                    <p><strong>Motivo:</strong> <span id="det-motivo"></span></p>
+                    <p><strong>Estado Actual:</strong> <span id="det-estado"></span></p>
+                    <p><strong>Plan:</strong> <span id="det-plan"></span></p>
+                    <p><strong>Fecha:</strong> <span id="det-fecha"></span></p>
+                    <hr>
+                    <p><strong>Notas:</strong></p>
+                    <p id="det-notas" class="text-muted italic"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
